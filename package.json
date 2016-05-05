@@ -1,0 +1,32 @@
+{
+  "name": "twitterstreamapi",
+  "version": "1.0.0",
+  "description": "An example project for working with NodeJS and Twitter's stream API",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxrbaldwin/NewsSeed.git"
+  },
+  "keywords": [
+    "Node",
+    "Twitter",
+    "API"
+  ],
+  "author": "Max Baldwin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxrbaldwin/NewsSeed/issues"
+  },
+  "homepage": "https://github.com/maxrbaldwin/NewsSeed#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "dotenv": "^2.0.0",
+    "twitter": "^1.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
