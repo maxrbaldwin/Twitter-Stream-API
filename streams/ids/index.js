@@ -21,26 +21,28 @@ const usStreamIds = {
 };
 
 const euStreamIds = {
-  area: eu,
+  area: 'eu',
   ids: [
     {
       name: 'theatlantic',
       id: 35773039,
     },
   ],
-}
+};
 
-function getStreamIds() {
-  const streams = [
-    usStreamIds,
-    euStreamIds
-  ];
+const allStreams = [
+  usStreamIds,
+  euStreamIds,
+]
 
-  streams.forEach(function(stream, i) {
-      ids.push(el.id);
+module.exports.getStreamIds = () => {
+  return [].concat(...allStreams.map(stream => stream.ids.map(data => data.id))).toString();
+};
+
+module.exports.getStreamIdsByArea = function getStreamIdsByArea() {
+  return allStreams.reduce((result, stream, i) => {
+    const { area, ids } = stream;
+    result[area] = ids;
+    return result;
   });
-
-  return ids.toString();
-}
-
-module.exports.getStreamIDs = getStreamIds;
+};
