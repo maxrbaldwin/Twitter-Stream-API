@@ -1,15 +1,15 @@
-var Twitter = require('twitter');
-var env = require('dotenv').config();
+const Twitter = require('twitter');
+const env = require('dotenv').config();
 
-var streamFilter = require('./streams/filters');
-var streamError = require('./streams/error');
-var streamIDs = require('./streams/ids');
+const streamFilter = require('./streams/filters');
+const streamError = require('./streams/error');
+const { getStreamIds } = require('./streams/ids');
 
-var streamParameters = {
-  follow: streamIDs.getStreamIDs()
+const streamParameters = {
+  follow: getStreamIds(),
 };
 
-var client = new Twitter({
+const client = new Twitter({
   consumer_key: env.consumer_key,
   consumer_secret: env.consumer_secret,
   access_token_key: env.access_token_key,
