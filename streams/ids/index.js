@@ -1,39 +1,48 @@
-var streamIDs = {
-    STREAM_IDS: [{
-        name: 'NYT',
-        id: 1255671
+const usStreamIds = {
+  area: 'us',
+  ids: [
+    {
+      name: 'NYT',
+      id: 1255671
     }, {
-        name: 'Guardian',
-        id: 87818409
+      name: 'bbcnews',
+      id: 612473
     }, {
-        name: 'bbcworld',
-        id: 742143
+      name: 'washingtonpost',
+      id: 2467791
+    } , {
+      name: 'newrepublic',
+      id: 82689705
     }, {
-        name: 'bbcnews',
-        id: 612473
-    }, {
-        name: 'washingtonpost',
-        id: 2467791
-    }, {
-        name: 'theatlantic',
-        id: 35773039
-    }, {
-        name: 'newrepublic',
-        id: 82689705
-    }, {
-        name: 'vice',
-        id: 23818581
-    }]
+      name: 'vice',
+      id: 23818581
+    }
+  ],
 };
 
-streamIDs.getStreamIDs = function() {
-    var ids = [];
+const euStreamIds = {
+  area: 'eu',
+  ids: [
+    {
+      name: 'theatlantic',
+      id: 35773039,
+    },
+  ],
+};
 
-    this.STREAM_IDS.forEach(function(el, i) {
-        ids.push(el.id);
-    });
+const allStreams = [
+  usStreamIds,
+  euStreamIds,
+]
 
-    return ids.toString();
-}
+module.exports.getStreamIds = () => {
+  return [].concat(...allStreams.map(stream => stream.ids.map(data => data.id))).toString();
+};
 
-module.exports = streamIDs;
+module.exports.getStreamIdsByArea = function getStreamIdsByArea() {
+  return allStreams.reduce((result, stream, i) => {
+    const { area, ids } = stream;
+    result[area] = ids;
+    return result;
+  });
+};
