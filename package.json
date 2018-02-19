@@ -4,7 +4,8 @@
   "description": "An example project for working with NodeJS and Twitter's stream API",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
