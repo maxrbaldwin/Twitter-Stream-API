@@ -3,10 +3,10 @@ const env = require('dotenv').config();
 
 const streamFilter = require('./streams/filters');
 const streamError = require('./streams/error');
-const { getStreamIds } = require('./streams/ids');
+const { getMultiStreamParameters } = require('./streams/ids');
 
 const streamParameters = {
-  follow: getStreamIds(),
+  follow: getMultiStreamParameters(),
 };
 
 const client = new Twitter({
@@ -17,6 +17,8 @@ const client = new Twitter({
 });
 
 client.stream('statuses/filter', streamParameters, function (stream) {
+  console.log('Listening...');
+
   stream.on('data', streamFilter);
   stream.on('error', streamError);
 });

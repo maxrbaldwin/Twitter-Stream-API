@@ -1,7 +1,28 @@
-var chalk = require('chalk');
+const chalk = require('chalk');
+const { getStreamIds } = require('./../ids');
 
-var streamFilter = function(tweet) {
-  console.log(chalk.green(tweet.user.screen_name, ' : ' , tweet.text));
+function checkIsTweetedBySources(tweetId) {
+  const streamIds = getStreamIds();
+  
+  return streamIds.includes(tweetId);
+}
+
+const streamFilter = function(tweet) {
+  const {
+    text,
+    id: tweetId,
+    user: {
+      id: userId,
+      screen_name: handle,
+    }
+  } = tweet;
+
+  const display = `${handle}: ${text}`;
+  const isTweetedBySources = checkIsTweetedBySources(tweetId);
+
+  if (isTweetedBySources) {
+    console.log(display);
+  }
 };
 
 module.exports = streamFilter;
