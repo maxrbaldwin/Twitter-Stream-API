@@ -87,21 +87,30 @@ const getMultiStreamParameters = () => {
 }
 
 /*
-* Returns object of area abbreviations as keys in an object
+* Determines if a tweet should be translated by id
 *
-* @ returns: areas {Object} all area objects above
+* @param: user id {Integer} user id tweet was tweeted by
+* @returns: boolean {Boolean} Returns if a tweet should be translated
 */
-const getStreamIdsByArea = function getStreamIdsByArea() {
-  return allStreams.reduce((result, stream, i) => {
-    const { area, ids } = stream;
-    result[area] = ids;
-    return result;
+const shouldTranslateById = id => {
+  let shouldTranslate;
+
+  allStreams.forEach(stream => {
+    const { ids } = stream;
+
+    for (source in ids) {
+      if (source.id === id) {
+        shouldTranslate = source.translate || false;
+      }
+    }
   });
-};
+
+  return shouldTranslate;
+}
 
 module.exports = {
   allStreams,
   getStreamIds,
   getMultiStreamParameters,
-  getMultiStreamParameters,
+  shouldTranslateById,
 }

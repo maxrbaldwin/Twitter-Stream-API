@@ -1,0 +1,10 @@
+runtime: nodejs
+env: flex
+env_variables:
+  consumer_key: Fob2x1FPeA92fRxpC6Dbz8qP2
+  consumer_secret: xJ3hZQACi7M8aMxaCWwmTYz9YuoDaxELmYZParvi3SHqPDJkaq
+  access_token_key: 190360439-qYKbVnX3Mz9Mc3a1iOHT1KWZO1k4Sj2rs60p0GUe
+  access_token_secret: ZVhGfWUARnhKTjqD8gGbZ532SIUsuhKWJQnd4WKaTiN1j
+  db_pass: j6X8Zg8zk53tyS9
+  db_user: mxuser
+  db_ip: 10.142.0.3
