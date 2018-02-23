@@ -1,9 +1,9 @@
 const Twitter = require('twitter');
 const env = require('dotenv').config();
 
-const streamFilter = require('./streams/filters');
-const streamError = require('./streams/error');
-const { getMultiStreamParameters } = require('./streams/ids');
+const streamFilter = require('./filters');
+const streamError = require('./error');
+const { getMultiStreamParameters } = require('./ids');
 
 const streamParameters = {
   follow: getMultiStreamParameters(),
