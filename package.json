@@ -2,10 +2,16 @@
   "name": "twitterstreamapi",
   "version": "1.0.0",
   "description": "An example project for working with NodeJS and Twitter's stream API",
-  "main": "app.js",
+  "main": "src/index.js",
+  "engines": {
+    "node": "8.9"
+  },
   "scripts": {
-    "test": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "mongo-start": "mongod --fork --logpath /usr/local/var/log/mongodb/mongo.log",
+    "mongo-start-config": "mongod --fork --config /data/db/configs/mongod.conf",
+    "mongo-start-cluster": "npm run mongo-start && npm run mongo-start-config"
   },
   "repository": {
     "type": "git",
@@ -23,12 +29,22 @@
   },
   "homepage": "https://github.com/maxrbaldwin/Twitter-Stream-API#readme",
   "dependencies": {
+    "@google-cloud/translate": "^1.1.0",
     "chalk": "^1.1.3",
     "dotenv": "^2.0.0",
+    "module-alias": "^2.0.6",
     "mongodb": "^3.0.2",
+    "request": "^2.83.0",
     "twitter": "^1.2.5"
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
+  },
+  "_moduleAliases": {
+    "@utils": "./src/utils",
+    "@ids": "./src/streams/ids",
+    "@db": "./src/db",
+    "@app": "./src/app",
+    "@streams": "./src/streams"
   }
 }
