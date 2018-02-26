@@ -21,7 +21,7 @@ const usStreamIds = {
 };
 
 const euStreamIds = {
-  translation: true,
+  translate: true,
   area: 'eu',
   ids: [
     {
@@ -32,7 +32,7 @@ const euStreamIds = {
 };
 
 const ruStreamIds = {
-  translation: true,
+  translate: true,
   area: 'ru',
   ids: [
     {
@@ -94,7 +94,7 @@ const getMultiStreamParameters = () => {
 */
 const shouldTranslateById = id => {
   let shouldTranslate;
-
+  
   allStreams.forEach(stream => {
     const { ids } = stream;
 

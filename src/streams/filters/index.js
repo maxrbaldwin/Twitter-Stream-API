@@ -1,5 +1,7 @@
 const events = require('events');
 const { parse: urlParse } = require('url');
+// const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+const { NEW_TWEET } = require('@sockets/SocketEvents')
 const { getStreamIds, shouldTranslateById } = require('@ids');
 const { scrapeHead, getUrlFromHead } = require('@utils/scraper');
 const translate = require('@utils/translate');
@@ -69,10 +71,12 @@ const streamFilter = async function(tweet) {
     translation ? { translation } : null,
   );
   console.log(translation || display);
-  await insertTweet({
+  const newTweet = await insertTweet({
     ...conditionalValues,
     tweet,
   });
+
+  // io.emit(NEW_TWEET, newTweet);
 };
 
 module.exports = streamFilter;

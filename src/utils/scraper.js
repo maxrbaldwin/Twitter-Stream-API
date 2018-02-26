@@ -1,11 +1,13 @@
 const { head, get } = require('request').defaults({
-    maxRedirects: 100
+    maxRedirects: 100,
 });
 
 function scrapeHead(url) {
   return new Promise((resolve, reject) => {
-    head(url, {
+    head({
+        url,
         followAllRedirects: true,
+        jar: true,
     }, function(err, headResponse) {
       if (err) {
         reject(err);

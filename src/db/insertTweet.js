@@ -7,8 +7,12 @@ const MongoUrl = getMongoUrl();
 const startDb = new Promise((resolveConnection, rejectConnection) => {
   // connect to Mongo
   Mongo.connect(MongoUrl, (err, db) => {
-    console.log(err)
-    // (err) ? rejectConnection(err) : resolveConnection(db);
+    if (err) {
+      console.log(err);
+      rejectConnection(err);
+    } else {
+      resolveConnection(db);
+    }
   });
 });
 
